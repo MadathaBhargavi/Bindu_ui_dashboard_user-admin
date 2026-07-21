@@ -1,0 +1,175 @@
+dashboard.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body class="bg-gray-100">
+
+<div class="flex">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-indigo-700 text-white min-h-screen">
+
+        <div class="p-6 text-2xl font-bold">
+            Admin Panel
+        </div>
+
+        <nav class="mt-8">
+
+            <a href="#" class="block py-3 px-6 hover:bg-indigo-600">
+                Dashboard
+            </a>
+
+            <a href="#" class="block py-3 px-6 hover:bg-indigo-600">
+                Users
+            </a>
+
+            <a href="#" class="block py-3 px-6 hover:bg-indigo-600">
+                Doctors
+            </a>
+
+            <a href="#" class="block py-3 px-6 hover:bg-indigo-600">
+                Appointments
+            </a>
+
+            <a href="#" class="block py-3 px-6 hover:bg-indigo-600">
+                Reports
+            </a>
+
+            <a href="#" class="block py-3 px-6 hover:bg-indigo-600">
+                Settings
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="flex-1 p-8">
+
+        <h1 class="text-3xl font-bold mb-6">
+            Dashboard
+        </h1>
+
+        <!-- Cards -->
+
+        <div class="grid grid-cols-4 gap-6">
+
+            <div class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-gray-500">Users</h2>
+                <p class="text-3xl font-bold mt-2">1,245</p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-gray-500">Doctors</h2>
+                <p class="text-3xl font-bold mt-2">58</p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-gray-500">Appointments</h2>
+                <p class="text-3xl font-bold mt-2">346</p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-gray-500">Revenue</h2>
+                <p class="text-3xl font-bold mt-2">$15,600</p>
+            </div>
+
+        </div>
+
+        <!-- Charts -->
+
+        <div class="grid grid-cols-2 gap-6 mt-8">
+
+            <div class="bg-white rounded-xl shadow p-6">
+
+                <h2 class="font-bold mb-4">
+                    Monthly Users
+                </h2>
+                <canvas id="barChart"></canvas>  
+
+            </div>
+
+            <div class="bg-white rounded-xl shadow p-6">
+
+                <h2 class="font-bold mb-4">
+                    Appointments
+                </h2>  
+                <canvas id="pieChart"></canvas>   
+
+            </div>
+
+        </div>
+
+        <!-- Table -->
+
+        <div class="bg-white rounded-xl shadow mt-8 p-6">
+
+            <h2 class="text-xl font-bold mb-4">
+                Recent Users
+            </h2>
+
+            <table class="w-full">
+
+                <thead>
+
+                <tr class="bg-gray-200">
+
+                    <th class="p-3 text-left">Name</th>
+                    <th class="p-3 text-left">Email</th>
+                    <th class="p-3 text-left">Status</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                <tr class="border-b">
+
+                    <td class="p-3">bhargavi</td>
+                    <td class="p-3">bhargavi@gmail.com</td>
+                    <td class="p-3 text-green-600">Active</td>
+
+                </tr>
+
+                <tr class="border-b">
+
+                    <td class="p-3">saisri</td>
+                    <td class="p-3">saisri@gmail.com</td>
+                    <td class="p-3 text-green-600">Active</td>
+
+                </tr>
+
+                <tr class="border-b">
+
+                    <td class="p-3">mounika</td>
+                    <td class="p-3">mouni@gmail.com</td>
+                    <td class="p-3 text-red-500">Inactive</td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>
