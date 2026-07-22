@@ -1,0 +1,28 @@
+
+[
+  {
+    "name": "Bhargavi",
+    "email": "bhargavi@gmail.com",
+    "status": "Active"
+  },
+  {
+    "name": "Saisri",
+    "email": "saisri@gmail.com",
+    "status": "Active"
+  },
+  {
+    "name": "Mounika",
+    "email": "mounika@gmail.com",
+    "status": "Inactive"
+  },
+  {
+    "name": "Harika",
+    "email": "harika@gmail.com",
+    "status": "Active"
+  },
+  {
+    "name": "Kavya",
+    "email": "kavya@gmail.com",
+    "status": "Inactive"
+  }
+]

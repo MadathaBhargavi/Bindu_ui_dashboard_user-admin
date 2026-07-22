@@ -1,13 +1,17 @@
-dashboard.html
+index.html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Admin Dashboard</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
@@ -16,160 +20,242 @@ dashboard.html
 
 <div class="flex">
 
-    <!-- Sidebar -->
-    <aside class="w-64 bg-indigo-700 text-white min-h-screen">
+<!-- Sidebar -->
 
-        <div class="p-6 text-2xl font-bold">
-            Admin Panel
+<aside class="w-64 bg-indigo-700 text-white min-h-screen">
+
+<div class="p-6 text-2xl font-bold">
+Admin Panel
+</div>
+
+<nav class="mt-8">
+
+<a href="index.html" class="block py-3 px-6 hover:bg-indigo-600">
+Dashboard
+</a>
+
+<a href="user.html" class="block py-3 px-6 hover:bg-indigo-600">
+Users
+</a>
+
+<a href="#" class="block py-3 px-6 hover:bg-indigo-600">
+Doctors
+</a>
+
+<a href="#" class="block py-3 px-6 hover:bg-indigo-600">
+Appointments
+</a>
+
+<a href="#" class="block py-3 px-6 hover:bg-indigo-600">
+Reports
+</a>
+
+<a href="#" class="block py-3 px-6 hover:bg-indigo-600">
+Settings
+</a>
+
+</nav>
+
+</aside>
+
+<!-- Main -->
+
+<main class="flex-1 p-8">
+
+<h1 class="text-3xl font-bold mb-6">
+
+Dashboard
+
+</h1>
+
+<!-- Cards -->
+
+<div class="grid grid-cols-4 gap-6">
+
+<div class="bg-white rounded-xl shadow p-6">
+
+<h2 class="text-gray-500">
+Total Users
+</h2>
+
+<p id="userCount"
+class="text-3xl font-bold mt-2">
+0
+</p>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6">
+
+<h2 class="text-gray-500">
+Doctors
+</h2>
+
+<p class="text-3xl font-bold mt-2">
+58
+</p>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6">
+
+<h2 class="text-gray-500">
+Appointments
+</h2>
+
+<p class="text-3xl font-bold mt-2">
+346
+</p>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6">
+
+<h2 class="text-gray-500">
+Revenue
+</h2>
+
+<p class="text-3xl font-bold mt-2">
+$15,600
+</p>
+
+</div>
+
+</div>
+<!-- Charts -->
+
+<div class="grid grid-cols-2 gap-6 mt-8">
+
+    <!-- Bar Chart -->
+
+    <div class="bg-white rounded-xl shadow p-6">
+
+        <h2 class="text-xl font-bold mb-4">
+            Monthly Users
+        </h2>
+
+        <canvas id="barChart"></canvas>
+
+    </div>
+
+    <!-- Pie Chart -->
+
+    <div class="bg-white rounded-xl shadow p-6">
+
+        <h2 class="text-xl font-bold mb-4">
+            User Status
+        </h2>
+
+        <canvas id="pieChart"></canvas>
+
+    </div>
+
+</div>
+
+<!-- User Management -->
+
+<div class="bg-white rounded-xl shadow mt-8 p-6">
+    <div class="flex justify-between items-center mb-4">
+
+    <h2 class="text-xl font-bold">
+        User Management
+    </h2>
+
+    <div class="flex gap-3">
+
+        <input
+            type="file"
+            id="fileInput"
+            accept=".json"
+            class="border p-2 rounded">
+
+        <button
+            id="showFormBtn"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+
+            Add User
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+    <!-- User Form -->
+
+    <div id="userForm" class="hidden bg-gray-100 p-4 rounded-lg mb-6">
+
+        <div class="grid grid-cols-3 gap-4">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter Name"
+                class="border p-2 rounded">
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter Email"
+                class="border p-2 rounded">
+
+            <select
+                id="status"
+                class="border p-2 rounded">
+
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+
+            </select>
+
         </div>
 
-        <nav class="mt-8">
+        <button
+            id="saveBtn"
+            class="bg-green-600 text-white px-5 py-2 rounded mt-4 hover:bg-green-700">
 
-            <a href="#" class="block py-3 px-6 hover:bg-indigo-600">
-                Dashboard
-            </a>
+            Save User
 
-            <a href="#" class="block py-3 px-6 hover:bg-indigo-600">
-                Users
-            </a>
+        </button>
 
-            <a href="#" class="block py-3 px-6 hover:bg-indigo-600">
-                Doctors
-            </a>
+    </div>
 
-            <a href="#" class="block py-3 px-6 hover:bg-indigo-600">
-                Appointments
-            </a>
+    <!-- Table -->
 
-            <a href="#" class="block py-3 px-6 hover:bg-indigo-600">
-                Reports
-            </a>
+    <table class="w-full border">
 
-            <a href="#" class="block py-3 px-6 hover:bg-indigo-600">
-                Settings
-            </a>
+        <thead class="bg-indigo-600 text-white">
 
-        </nav>
+            <tr>
 
-    </aside>
+                <th class="p-3">Name</th>
 
-    <!-- Main Content -->
+                <th class="p-3">Email</th>
 
-    <main class="flex-1 p-8">
+                <th class="p-3">Status</th>
 
-        <h1 class="text-3xl font-bold mb-6">
-            Dashboard
-        </h1>
+                <th class="p-3">Actions</th>
 
-        <!-- Cards -->
+            </tr>
 
-        <div class="grid grid-cols-4 gap-6">
+        </thead>
 
-            <div class="bg-white rounded-xl shadow p-6">
-                <h2 class="text-gray-500">Users</h2>
-                <p class="text-3xl font-bold mt-2">1,245</p>
-            </div>
+        <tbody id="userTable">
 
-            <div class="bg-white rounded-xl shadow p-6">
-                <h2 class="text-gray-500">Doctors</h2>
-                <p class="text-3xl font-bold mt-2">58</p>
-            </div>
+        </tbody>
 
-            <div class="bg-white rounded-xl shadow p-6">
-                <h2 class="text-gray-500">Appointments</h2>
-                <p class="text-3xl font-bold mt-2">346</p>
-            </div>
+    </table>
 
-            <div class="bg-white rounded-xl shadow p-6">
-                <h2 class="text-gray-500">Revenue</h2>
-                <p class="text-3xl font-bold mt-2">$15,600</p>
-            </div>
+</div>
 
-        </div>
-
-        <!-- Charts -->
-
-        <div class="grid grid-cols-2 gap-6 mt-8">
-
-            <div class="bg-white rounded-xl shadow p-6">
-
-                <h2 class="font-bold mb-4">
-                    Monthly Users
-                </h2>
-                <canvas id="barChart"></canvas>  
-
-            </div>
-
-            <div class="bg-white rounded-xl shadow p-6">
-
-                <h2 class="font-bold mb-4">
-                    Appointments
-                </h2>  
-                <canvas id="pieChart"></canvas>   
-
-            </div>
-
-        </div>
-
-        <!-- Table -->
-
-        <div class="bg-white rounded-xl shadow mt-8 p-6">
-
-            <h2 class="text-xl font-bold mb-4">
-                Recent Users
-            </h2>
-
-            <table class="w-full">
-
-                <thead>
-
-                <tr class="bg-gray-200">
-
-                    <th class="p-3 text-left">Name</th>
-                    <th class="p-3 text-left">Email</th>
-                    <th class="p-3 text-left">Status</th>
-
-                </tr>
-
-                </thead>
-
-                <tbody>
-
-                <tr class="border-b">
-
-                    <td class="p-3">bhargavi</td>
-                    <td class="p-3">bhargavi@gmail.com</td>
-                    <td class="p-3 text-green-600">Active</td>
-
-                </tr>
-
-                <tr class="border-b">
-
-                    <td class="p-3">saisri</td>
-                    <td class="p-3">saisri@gmail.com</td>
-                    <td class="p-3 text-green-600">Active</td>
-
-                </tr>
-
-                <tr class="border-b">
-
-                    <td class="p-3">mounika</td>
-                    <td class="p-3">mouni@gmail.com</td>
-                    <td class="p-3 text-red-500">Inactive</td>
-
-                </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </main>
+</main>
 
 </div>
 
 <script src="dashboard.js"></script>
 
 </body>
+
 </html>
